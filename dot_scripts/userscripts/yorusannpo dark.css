@@ -1,0 +1,14 @@
+/* ==UserStyle==
+@name        yorusannpo dark
+@description 夜散歩のススメ dark theme
+@match       http://yorusannpo.blog.jp/*
+==/UserStyle== */
+
+.article-body-inner img.pict {
+    border: none;
+    box-shadow: none;
+    filter: invert();
+}
+html {
+    filter: invert();
+}

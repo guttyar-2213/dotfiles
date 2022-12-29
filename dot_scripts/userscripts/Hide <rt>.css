@@ -1,0 +1,9 @@
+/* ==UserStyle==
+@name        Hide <rt>
+@description for copy, hide <rt> tag
+@match       <all_urls>
+==/UserStyle== */
+
+rt {
+    display: none;
+}

@@ -1,0 +1,9 @@
+/* ==UserStyle==
+@name        YouTube Subtitle Font Fix
+@description for ja-jp
+@match       https://www.youtube.com/watch
+==/UserStyle== */
+
+.html5-video-player .caption-visual-line .ytp-caption-segment:last-child {
+    font-family: sans-serif !important;
+}

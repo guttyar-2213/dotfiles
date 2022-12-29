@@ -1,0 +1,16 @@
+/* ==UserStyle==
+@name        高崎線発車標Fix
+@description JR東日本 高崎線在来線の発車標シミュレータのフォント他を修正します
+@match       http://r113.sakura.ne.jp/p/hasshahyo/jre-takasaki/index.html
+==/UserStyle== */
+.font_scroll {
+    font-family: "KHドット神楽坂16";
+    top: 0 !important;
+}
+img {
+    image-rendering: pixelated;
+}
+@font-face {
+	font-family: 'KHドット神楽坂16';
+	src: local('KH-Dot-kagurazaka-16');
+}

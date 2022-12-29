@@ -1,0 +1,9 @@
+/* ==UserStyle==
+@name        StockShot Fix
+@description news.mapcamera.comの痒いところを掻く
+@match       https://news.mapcamera.com/*
+==/UserStyle== */
+
+.loading {
+    display: none;
+}

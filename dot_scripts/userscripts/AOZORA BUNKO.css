@@ -1,0 +1,15 @@
+/* ==UserStyle==
+@name        AOZORA BUNKO
+@description 青空文庫のページでルビを選択させない
+@match       https://www.aozora.gr.jp/*
+==/UserStyle== */
+
+ruby {
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+rb {
+    -webkit-user-select: text;
+    user-select: text;
+}

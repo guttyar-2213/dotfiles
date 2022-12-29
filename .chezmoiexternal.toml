@@ -7,3 +7,13 @@
     type = "git-repo"
     url = "https://github.com/mchav/with.git"
     refreshPeriod = "168h"
+
+[".scripts/wolfram"]
+    type = "git-repo"
+    url = "https://github.com/WolframResearch/WolframLanguageForJupyter.git"
+    refreshPeriod = "168h"
+
+[".scripts/other/nightdrive"]
+    type = "git-repo"
+    url = "https://github.com/guttyar-2213/nightdrive.git"
+    refreshPeriod = "168h"

@@ -3,3 +3,9 @@
 .config/zsh/.iterm2/**
 .config/zsh/.iterm2_shell_integration
 .config/zsh/.zcompdump
+.scripts/cron/clawler/archive.log
+.scripts/cron/music-dl-d/stack
+.scripts/raycast/script-commands/**
+.scripts/raycast/store/**
+.scripts/other/applemusic/cache
+.scripts/old/**

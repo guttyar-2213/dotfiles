@@ -1,0 +1,7 @@
+to run scripts:
+1. iTerm2 > Scripts > New Python Script
+   ... to install Python environment
+   ... esc to exit making script
+2. Link scripts
+$ cd ~/Library/Application Support/iTerm2/Scripts
+$ ln -s ~/.scripts/iterm2/script.py script.py
