@@ -1,0 +1,43 @@
+Host github github.com
+  HostName github.com
+  IdentityFile ~/.keys/github
+  User git
+
+#[url "github:"]
+#  InsteadOf = https://github.com/
+#  InsteadOf = git@github.com:
+
+Host raspi
+  HostName 192.168.1.72
+  IdentityFile ~/.keys/raspi
+  User ubuntu
+  Port 2222
+  ForwardX11 yes
+
+Host mbp
+  HostName macbookpro.local
+  IdentityFile ~/.keys/mbp
+  User guttyar2213
+  Port 22
+
+Host macmini
+  HostName macmini.local
+  IdentityFile ~/.keys/macmini
+  User nagasekyoko
+  Port 5032
+
+Host linux
+  HostName linuxmini.local
+  IdentityFile ~/.keys/linuxmini
+  User guttyar2213
+  Port 5232
+  ForwardX11 yes
+  ForwardX11Trusted yes
+
+#multipassvmlinux
+#Host mvl
+#  HostName 192.168.64.20
+#  IdentityFile ~/.keys/multipass.id_rsa
+#  User ubuntu
+#  Port 22
+#  ForwardX11 yes
