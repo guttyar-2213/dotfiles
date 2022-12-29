@@ -30,6 +30,11 @@ alias bi="brew install"
 alias bu="brew uninstall"
 alias gallery-dl="gallery-dl -c ~/.config/gallery-dl/gallery-dl.conf"
 alias diff="colordiff"
+alias gcl="git clone"
+alias gst="git status"
+alias gps="git push"
+alias gpl="git pull"
+alias gcm="git commit"
 
 alias rm='echo This operation is not an outright deletion\; the file can be restored at any time using the trash-restore command.; rmtrash -i'
 alias rmdir='rmdirtrash -i'
