@@ -29,6 +29,7 @@ alias bs="brew search"
 alias bi="brew install"
 alias bu="brew uninstall"
 alias gallery-dl="gallery-dl -c ~/.config/gallery-dl/gallery-dl.conf"
+alias diff="colordiff"
 
 alias rm='echo This operation is not an outright deletion\; the file can be restored at any time using the trash-restore command.; rmtrash -i'
 alias rmdir='rmdirtrash -i'
@@ -221,3 +222,4 @@ Terminal cursor shape is set to [shape].
 # smartctl - smartmontools, get infomation of disk
 # uconv - unicode tools
 # termtyper - tui typing test
+# delta - diff with syntax highlight
