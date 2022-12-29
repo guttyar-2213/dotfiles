@@ -1,7 +1,7 @@
 # brew shellenv from .zshenv
 # .zshenvで設定すると/etc/zprofileのpath_helperに
 # /usr/bin他をbrewより前に書いてしまうため
-if [ "$(arch)" = "arm64" ]; then
+if [ "$(arch)" = "arm64" ] && [ "$(uname)" = "Darwin" ]; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
   path=(
     /opt/homebrew/opt/openjdk/bin
@@ -23,7 +23,7 @@ if [ "$(arch)" = "arm64" ]; then
     $path
   )
   eval `dircolors`
-else
+elif [ "$(uname)" = "Darwin" ]; then
   eval "$(/usr/local/bin/brew shellenv)"
   path=(
     $HOME/Library/Python/3.9/bin
@@ -32,36 +32,36 @@ else
   )
 fi
 path=(
-  $HOME/.local/share/cargo/bin
+  $XDG_DATA_HOME/cargo/bin
   $HOME/.scripts/bin/rmtrash
   $HOME/.scripts/bin/with
   $HOME/.scripts/bin/pbtail
-  $HOME/.local/share/go/bin
+  $XDG_DATA_HOME/go/bin
   $path
 )
 typeset -U path PATH
 
 # history
 # rm ${ZDOTDIR:-$HOME}/.zsh_history
-export HISTFILE=$HOME/.cache/zsh/history
+export HISTFILE=$XDG_CACHE_HOME/zsh/history
 export HISTSIZE=1000
 export SAVEHIST=100000
 
 # other loads
-source $HOME/.config/zsh/.aliases
+source $XDG_CONFIG_HOME/zsh/.aliases
 . /opt/homebrew/opt/asdf/libexec/asdf.sh
 source "${ZDOTDIR}/.iterm2_shell_integration.zsh"
 eval "$(gh completion -s zsh)"
 
 # Zinit
-if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
+ZINIT_HOME="$XDG_DATA_HOME/zinit/zinit.git"
+if [[ ! -f $XDG_DATA_HOME/zinit/zinit.git/zinit.zsh ]]; then
   echo "Installing zinit ..."
-  mkdir -p "$HOME/.local/share/zinit"
-  chmod g-rwX "$HOME/.local/share/zinit"
-  git clone https://github.com/zdharma/zinit "$HOME/.local/share/zinit/zinit.git"
+  mkdir -p "$(dirname $ZINIT_HOME)"
+  git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
   echo "Complete."
 fi
-source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
+source "${ZINIT_HOME}/zinit.zsh"
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
@@ -88,13 +88,13 @@ zstyle :prompt:pure:prompt:success color blue
 # Autocomplete
 fpath=(
   /opt/homebrew/share/zsh/site-functions
-  $HOME/.local/share/rustup/toolchains/*/share/zsh/site-functions
+  $XDG_DATA_HOME/rustup/toolchains/*/share/zsh/site-functions
   ${ASDF_DIR}/completions
   $fpath
 )
 typeset -U fpath FPATH
 _cache_hosts=(`ruby -ne 'if /^Host\s+(.+)$/; print $1.strip, "\n"; end' ~/.ssh/config`)
-autoload -Uz compinit && compinit -i -d $HOME/.cache/zsh/zcompdump
+autoload -Uz compinit && compinit -i -d $XDG_CACHE_HOME/zsh/zcompdump
 
 # profiling zsh
 # if (which zprof > /dev/null) ;then

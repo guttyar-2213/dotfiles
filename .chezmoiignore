@@ -2,3 +2,4 @@
 .config/vim/autoload/**
 .config/zsh/.iterm2/**
 .config/zsh/.iterm2_shell_integration
+.config/zsh/.zcompdump
