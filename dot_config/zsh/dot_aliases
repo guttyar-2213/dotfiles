@@ -20,8 +20,8 @@ alias music-dl='~/Music/WWW/add.sh'
 alias tty-clock='tty-clock -sc'
 alias clock='tty-clock'
 alias x86="arch -x86_64 /usr/local/bin/zsh"
-alias du="du -h"
-alias df="df -Ha"
+alias du="gdu -h"
+alias df="gdf -Ha"
 alias bat="bat --paging=never"
 alias wget="wget --hsts-file=~/.config/wget/wget-hsts"
 alias type="type -a"
