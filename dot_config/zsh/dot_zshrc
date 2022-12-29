@@ -49,9 +49,13 @@ export SAVEHIST=100000
 
 # other loads
 source $XDG_CONFIG_HOME/zsh/.aliases
-. /opt/homebrew/opt/asdf/libexec/asdf.sh
 source "${ZDOTDIR}/.iterm2_shell_integration.zsh"
 eval "$(gh completion -s zsh)"
+if [ "$(uname)" = "Darwin" ]; then
+  . /opt/homebrew/opt/asdf/libexec/asdf.sh
+elif [ "$(uname)" = "Linux" ]; then
+  . $HOME/.asdf/asdf.sh
+fi
 
 # Zinit
 ZINIT_HOME="$XDG_DATA_HOME/zinit/zinit.git"
