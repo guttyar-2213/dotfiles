@@ -1,0 +1,167 @@
+" XDG
+set runtimepath^=$XDG_CONFIG_HOME/vim
+set runtimepath+=$XDG_DATA_HOME/vim
+set runtimepath+=$XDG_CONFIG_HOME/vim/after
+
+set packpath^=$XDG_DATA_HOME/vim,$XDG_CONFIG_HOME/vim
+set packpath+=$XDG_CONFIG_HOME/vim/after,$XDG_DATA_HOME/vim/after
+
+let g:netrw_home = $XDG_DATA_HOME."/vim"
+call mkdir($XDG_DATA_HOME."/vim/spell", 'p')
+set viewdir=$XDG_DATA_HOME/vim/view | call mkdir(&viewdir, 'p')
+
+set backupdir=$XDG_CACHE_HOME/vim/backup | call mkdir(&backupdir, 'p')
+set directory=$XDG_CACHE_HOME/vim/swap   | call mkdir(&directory, 'p')
+set undodir=$XDG_CACHE_HOME/vim/undo     | call mkdir(&undodir,   'p')
+
+if !has('nvim') | set viminfofile=$XDG_CACHE_HOME/vim/viminfo | endif
+
+" encoding
+set encoding=utf-8
+set fileencoding=utf-8
+set fileencodings=ucs-boms,utf-8,euc-jp,cp932
+set fileformats=unix,dos,mac
+set ambiwidth=double
+scriptencoding utf-8
+
+" indent
+set expandtab
+set tabstop=2
+set softtabstop=1
+set autoindent
+set smartindent
+set shiftwidth=2
+
+" search
+set incsearch
+set ignorecase
+set smartcase
+set hlsearch
+
+" cursor
+set whichwrap=b,s,h,l,<,>,[,],~
+set number
+set guicursor=
+nnoremap j gj
+nnoremap k gk
+nnoremap <esc><esc> <esc>:noh<cr>
+noremap <c-h> <c-w><c-h>
+noremap <c-j> <c-w><c-j>
+noremap <c-k> <c-w><c-k>
+noremap <c-l> <c-w><c-l>
+set backspace=indent,eol,start
+
+" etc
+set viminfo+=n~/.cache/vim/viminfo
+set showmatch
+set matchtime=1
+set matchpairs& matchpairs+=<:>
+set timeout timeoutlen=1000 ttimeoutlen=50
+let mapleader = "\<space>"
+autocmd BufNewFile,BufRead memo.txt $r! echo '\n---------------------------------------------------------------------------' && date
+" inoremap <silent> <s><s> <esc>:wq<cr>
+" highlight tab, space, eol
+set list
+set listchars=tab:>.,trail:_,eol:$,extends:>,precedes:<,nbsp:%
+
+" highlight full-width space
+function! ZenkakuSpace()
+  highlight ZenkakuSpace cterm=reverse ctermfg=red gui=reverse guifg=red
+endfunction
+if has('syntax')
+  augroup ZenkakuSpace
+    autocmd!
+    autocmd ColorScheme       * call ZenkakuSpace()
+    autocmd VimEnter,WinEnter * match ZenkakuSpace /　/
+  augroup END
+  call ZenkakuSpace()
+endif
+
+" auto ime off when esc (leave insert mode)
+" https://rcmdnk.com/blog/2017/03/10/computer-mac-vim/
+" if has('mac')
+"   set ttimeoutlen=1
+"   let g:imeoff = 'osascript -e "tell application \"System Events\" to key code 102"'
+"   augroup MyIMEGroup
+"     autocmd!
+"     autocmd InsertLeave * :call system(g:imeoff)
+"   augroup END
+"   noremap <silent> <ESC> <ESC>:call system(g:imeoff)<CR>
+" endif
+
+let g:jetpack#optimization=1
+
+call jetpack#begin()
+" Jetpack 'arcticicestudio/nord-vim'
+  Jetpack 'itchyny/lightline.vim'
+  Jetpack 'cocopon/iceberg.vim'
+  Jetpack 'prabirshrestha/vim-lsp'
+  Jetpack 'mattn/vim-lsp-settings', { 'do': 'chmod +x ./installer/*' }
+" Jetpack 'cohama/lexima.vim'
+  Jetpack 'prabirshrestha/asyncomplete.vim'
+  Jetpack 'prabirshrestha/asyncomplete-lsp.vim'
+  Jetpack 'w0rp/ale'
+  Jetpack 'airblade/vim-gitgutter'
+  Jetpack 'ervandew/supertab'
+  Jetpack 'easymotion/vim-easymotion'
+  Jetpack 'junegunn/fzf', { 'do': { -> fzf#install() } }
+  Jetpack 'junegunn/fzf.vim'
+call jetpack#end()
+
+" autocomplete
+let g:lsp_settings = {
+\  'clangd': {'cmd': ['clangd']},
+\  'efm-langserver': {'disabled': v:false},
+\  'pyls': {
+\    'plugins': {
+\      'jedi_definition': {
+\        'follow_imports': v:true, 
+\        'follow_builtin_imports': v:true
+\      }
+\    }
+\  }
+\}
+" call lexima#init()
+" inoremap <expr><CR>  pumvisible() ? "<C-y>" : lexima#expand('<CR>', 'i')
+set completeopt=menuone,noinsert
+let g:SuperTabDefaultCompletionType = "<c-n>"
+
+" colorscheme
+set termguicolors
+set cursorline
+filetype plugin indent on
+syntax enable
+colorscheme iceberg
+" colorscheme nord
+set background=light
+if system("defaults read -g AppleInterfaceStyle") == "Dark\n"
+  set background=dark
+endif
+let g:fzf_colors =
+\ { 'fg':         ['fg', 'Normal'],
+  \ 'bg':         ['bg', 'Normal'],
+  \ 'preview-bg': ['bg', 'NormalFloat'],
+  \ 'hl':         ['fg', 'Comment'],
+  \ 'fg+':        ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':        ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':        ['fg', 'Statement'],
+  \ 'info':       ['fg', 'PreProc'],
+  \ 'border':     ['fg', 'Ignore'],
+  \ 'prompt':     ['fg', 'Conditional'],
+  \ 'pointer':    ['fg', 'Exception'],
+  \ 'marker':     ['fg', 'Keyword'],
+  \ 'spinner':    ['fg', 'Label'],
+  \ 'header':     ['fg', 'Comment'] }
+
+" statusline
+set laststatus=2
+set nosmd
+let g:lightline = { "colorscheme": 'iceberg' }
+" let g:lightline = { "colorscheme": 'nord' }
+
+" omajinai-
+set t_BE=
+
+" vim-easymotion
+let mapleader = "\<space>"
+map <Leader> <Plug>(easymotion-prefix)
