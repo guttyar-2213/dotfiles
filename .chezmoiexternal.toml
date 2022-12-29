@@ -13,3 +13,7 @@
     url = "https://github.com/mchav/with.git"
     refreshPeriod = "168h"
 
+[".scripts/bin/termtyper"]
+    type = "git-repo"
+    url = "https://github.com/kraanzu/termtyper.git"
+    refreshPeriod = "168h"
