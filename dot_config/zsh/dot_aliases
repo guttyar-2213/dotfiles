@@ -104,6 +104,17 @@ function pdf2img() {
   # $2: Input PDF file (ex. File.pdf)
 }
 
+function arch() {
+  ARCH=$(\arch)
+  if [ "$ARCH" = "arm64" ]; then
+    echo aarch64
+  elif [ "$ARCH" = "i386" ]; then
+    echo x86_64
+  else
+    echo $ARCH
+  fi
+}
+
 function pavd() { # print audio/visual devices
   ffmpeg -f avfoundation -list_devices true -i ""
 }
