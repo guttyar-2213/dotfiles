@@ -91,6 +91,7 @@ endif
 
 let g:jetpack#optimization=1
 
+packadd vim-jetpack
 call jetpack#begin()
 " Jetpack 'arcticicestudio/nord-vim'
   Jetpack 'itchyny/lightline.vim'
