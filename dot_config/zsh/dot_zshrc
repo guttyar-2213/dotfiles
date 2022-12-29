@@ -97,7 +97,7 @@ fpath=(
   $fpath
 )
 typeset -U fpath FPATH
-_cache_hosts=(`ruby -ne 'if /^Host\s+(.+)$/; print $1.strip, "\n"; end' ~/.ssh/config`)
+_cache_hosts=(`ruby -ne 'if /^Host\s+(.+)$/; print $1.strip, "\n"; end' $XDG_CONFIG_HOME/ssh/config`)
 autoload -Uz compinit && compinit -i -d $XDG_CACHE_HOME/zsh/zcompdump
 
 # profiling zsh
