@@ -55,6 +55,7 @@ if [ "$(uname)" = "Darwin" ]; then
   . /opt/homebrew/opt/asdf/libexec/asdf.sh
 elif [ "$(uname)" = "Linux" ]; then
   . $HOME/.asdf/asdf.sh
+  source /etc/zsh_command_not_found
 fi
 
 # Zinit
