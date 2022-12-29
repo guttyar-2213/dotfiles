@@ -1,0 +1,36 @@
+# Display
+--progress
+
+--abort-on-error
+
+# Output
+#--write-comments
+--embed-chapters
+--embed-metadata
+--embed-thumbnail
+--xattrs
+--mtime
+--output '%(title)s.%(ext)s'
+
+# Format
+--merge-output-format mkv
+--remux-video mkv
+--format 'bv*+ba/b'
+--audio-quality 0
+
+# Range
+--live-from-start
+--yes-playlist
+
+# Subtitles
+--embed-subs
+--sub-langs all
+
+# Downloader
+-N 8
+# --downloader aria2c
+# --downloader "dash,m3u8:native"
+
+# Country
+--geo-bypass-country JP
+--add-header Accept-Language:ja-jp
