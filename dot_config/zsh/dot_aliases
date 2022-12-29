@@ -1,0 +1,223 @@
+# alias
+alias ls='exa -a'
+alias ll='exa -l -a -B --git'
+alias mv='mv -i'
+alias cp='cp -i'
+alias rsync='rsync -ahvP --no-i-r --info=progress2 --stats'
+alias cpck='rsync -ahvcnP --no-i-r --info=progress2 --stats'
+alias mkdir='mkdir -p'
+alias tcpdump='sudo tcpdump'
+alias apt='sudo apt'
+alias tree='exa --tree'
+alias pstree='ps axf'
+alias ps='ps ax'
+alias '$'='command'
+alias '#'=':'
+alias gcc='gcc-11'
+alias g++='g++-11'
+alias memo='vi -c start + ~/Desktop/memo.txt'
+alias music-dl='~/Music/WWW/add.sh'
+alias tty-clock='tty-clock -sc'
+alias clock='tty-clock'
+alias x86="arch -x86_64 /usr/local/bin/zsh"
+alias du="du -h"
+alias df="df -Ha"
+alias bat="bat --paging=never"
+alias wget="wget --hsts-file=~/.config/wget/wget-hsts"
+alias type="type -a"
+alias bs="brew search"
+alias bi="brew install"
+alias bu="brew uninstall"
+alias gallery-dl="gallery-dl -c ~/.config/gallery-dl/gallery-dl.conf"
+
+alias rm='echo This operation is not an outright deletion\; the file can be restored at any time using the trash-restore command.; rmtrash -i'
+alias rmdir='rmdirtrash -i'
+
+function mkcdir() {
+  mkdir $@
+  cd $1
+}
+
+function mkfil() {
+  if [[ -e "$1" ]]; then
+    echo "$1: exists"
+  else
+    mkdir -p "$(dirname "$1")"
+    touch "$1"
+  fi
+  file "$1"
+  ls -l "$1"
+}
+
+function md5() { md5sum $@ | awk NF=1 }
+function sha() { sha1sum $@ | awk NF=1 }
+function sha2() { sha256sum $@ | awk NF=1 }
+
+function reset-launchpad() {
+  defaults write com.apple.dock ResetLaunchPad -bool true
+  killall Dock
+}
+
+function unlock-keyring() {
+  read -rsp "Password: " pass
+  export $(echo -n "$pass" | gnome-keyring-daemon --replace --unlock)
+  unset pass
+}
+
+function nico-dl() {
+  local message="本日はニコニコ動画に\n御アクセス頂き、\nありがとうございます。\n\nただいま、回線が混雑\nしているため通信帯域が\n制限されています。\n\n大変申し訳ありませんが、\nこのプログラムは午後六時から\n午前二時の間、\nニコニコ動画を利用\nすることができません。\n\nまたの御利用をお待ちしております。\n"
+  local hour=`date '+%H'`
+  if (( $hour >= 18 || $hour <= 2 )); then
+    printf "$message"
+    exit 1
+  fi
+  yt-dlp --downloader aria2c --no-part $@
+}
+
+function storage() {
+  sudo /usr/bin/du -g -x -d 5 ${1:-/} 2>/dev/null | awk '$1 >= 5{print}'
+}
+
+function apps-storage() {
+  fd -g "*.app" -HI -E "Contents/" -E "/System/Volumes/Data/" / -x readlink -f "{}" | awk '!a[$0]++{print}' | xargs -I{} du -sbH "{}" | sort -g | awk '{a+=$1; print $0} END {print a, "total (bytes)"}'
+}
+
+# function music-dl() {
+#   cd ~/Music/WWW
+#   echo $@ | xargs -I{} -n 1 ./add.sh "{}"
+#   cd -
+# }
+
+function pdf2img() {
+  gs -sDEVICE=png16m -r300 -dGraphicsAlphaBits=4 -o $1 $2
+  # $1: Output files (ex. PDF-%02d.png)
+  # $2: Input PDF file (ex. File.pdf)
+}
+
+function pavd() { # print audio/visual devices
+  ffmpeg -f avfoundation -list_devices true -i ""
+}
+
+function play() {
+  prev=$(pwd); cd ~/.scripts/other/applemusic/
+  ./select.sh $@
+  cd $prev
+}
+
+function serial() {
+  # --from <number>: count start from
+  # usage: serial file | xargs -n 2 mv -i
+  # usage: serial < file
+  local -A opts
+  zparseopts -D -A opts -- -from:
+  count=${opts[--from]:-1}
+  local file=`[[ -p /dev/stdin ]] && cat - || cat $1`
+  if [[ -z "${file}" ]]; then; return 1; fi
+  echo $file | while read line; do
+    echo "\"$line\"" "$count"
+    count=$((count + 1))
+  done
+}
+
+function colormac() {
+  if [[ $(defaults read -g AppleInterfaceStyle 2> /dev/null) == Dark ]]; then
+    echo dark
+  else
+    echo light
+  fi
+}
+
+function cursor() {
+  help="\
+Usage: cursor [shape]
+   or: cursor help
+Terminal cursor shape is set to [shape].
+
+[shape]
+  uline: Underline.
+  vbar:  Virtical bar.
+  box:   Box.
+"
+  error=0
+  case "$1" in
+    "uline" ) echo "\e[4 q" ;;
+    "vbar" ) echo "\e[6 q" ;;
+    "box" ) echo "\e[2 q" ;;
+    "help" ) echo "$help" ;;
+    * ) error=1 ;;
+  esac
+  
+  if [[ "$error" = "1" ]]; then
+    echo "$help"
+    return 127
+  fi
+  # alias cursor='echo "\e[4 qThe cursor is now set to the underline."'
+}
+
+# Awesome commands:
+# ncdu - graphical du
+# mdfind - Spotlight command-line interface
+# aria2c - downloader for .torrent, http
+# pbpaste - macOS clipboard tool
+# rsync - fast copy tool
+# htop - system monitor
+# ffprobe - print media infomation by ffmpeg
+# neofetch - print terminal information
+# cot - CotEditor cli
+# open - macOS object opener
+# unar - The Unarchiver cli
+# with - subcommands utility. ex:
+#   $ with git
+#   git > add .
+# archimede - print directory infomation
+# cpufetch - print cpu information
+# http - the simple http server. ex:
+#   $ http # current dir to 0.0.0.0:8000 or up
+#   $ http -a localhost -p 3000
+#   $ http --gen-ssl
+# gh - github cli. ex:
+#   $ gh gist create hello.py
+#   $ pbpaste | gh gist create -f "name" -d "desc"
+# arping - ping with arp protocol
+# ssh - secure shell
+#   $ ssh -L 0.0.0.0:80:localhost:8888 -N mbp
+#   $ # localhost:8888 in mbp -> 0.0.0.0:80 in this computer
+# script - record tty screen, screenreplay is only linux
+# bd - jump to parent directories
+# hyperfine - take benchmark
+# csview - csv table viewer
+# tokei - source code languange stats in directory
+# dig - DNS lookup tool
+# nslookup - DNS lookup tool
+# whois - DNS lookup tool
+# watch - command run in every second
+# bandwhich - watch bandwidth of every connection
+# gping - graphical ping
+# httpie - http client
+# binwalk - analyze binary
+# readelf - analyze binary
+# file - read file magick number
+# readlink - read symbolic link
+# genact - i am just working
+# globe - look around the world
+# glitchcat - print file contents with glitch effect
+# ruffle - flash player emulator
+# wayback_machine_downloader - literally
+# pbtail - old name: ./sh
+# btop - graphical top, system stats
+# duf - graphical df
+# mapscii.me - telnet server, maps with ascii
+# exiftool - metadata tools for photos
+# identify - imagemagick's file command
+# sips - macOS metadata tools for photos
+# convert - imagemagick's editor command
+# magick - imagemagick common command
+# nnn - command-line file manager
+# viu - terminal image viewer
+# opendrop - opensource airdrop impl
+# mpd - terminal music player
+# noti - macOS notification utility
+# diskutil - macOS System disk utility
+# smartctl - smartmontools, get infomation of disk
+# uconv - unicode tools
+# termtyper - tui typing test

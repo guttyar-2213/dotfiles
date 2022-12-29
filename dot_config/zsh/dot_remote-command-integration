@@ -1,0 +1,26 @@
+
+# remote command integration & command-not-found.plugin
+# export REMOTE_ADDR="ubuntu"
+# # alias remote_exec="multipass exec $REMOTE_ADDR -- "
+# function remote_exec() { return 1 }
+# function cmd-404() {
+#   txt="$(brew which-formula --explain $1 2>/dev/null)"
+#   if [ -z "$txt" ]; then
+#     echo "zsh: command not found (in local): $1"
+#   else
+#     echo $txt
+#   fi
+# }
+# command_not_found_handler() {
+#   cmd-404 $* &
+#   _="$(remote_exec which $1 2>&1)"; code=$?
+#   wait $!
+#   if [[ "$code" == "0" ]]; then
+#     echo -n "zsh: run command in $REMOTE_ADDR? (y/N): "
+#     read -q && echo "\nzsh: running..." && remote_exec $*
+#     return $?
+#   else
+#     echo "zsh: command not found (in $REMOTE_ADDR): $1"
+#   fi
+#   return 127
+# }
