@@ -7,8 +7,7 @@
 	ignorecase = false
 	editor = vim
 	quotepath = false
-	excludesfile = /Users/guttyar2213/.config/git/ignore
-#	excludesfile = ~/.config/git/ignore
+	excludesfile = {{ .chezmoi.homeDir }}/.config/git/ignore
 [color]
 	ui = true
 [credential]
