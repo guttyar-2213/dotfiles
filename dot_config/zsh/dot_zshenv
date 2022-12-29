@@ -49,28 +49,28 @@ export CPPFLAGS="-I/opt/homebrew/opt/libarchive/include"
 export PKG_CONFIG_PATH="/opt/homebrew/opt/libarchive/lib/pkgconfig"
 
 # organize files in home directory
-export NPM_CONFIG_USERCONFIG=$HOME/.config/npm/config
-export NODE_REPL_HISTORY=$HOME/.cache/node/history
-export PYTHONHISTFILE=$HOME/.cache/python/history
-export PYTHONSTARTUP=$HOME/.config/python/pythonstartup.py
-export IRBRC=$HOME/.config/irb/irbrc
-export LESSHISTFILE=$HOME/.cache/less/lesshst
-export ASDF_CONFIG_FILE=$HOME/.config/asdf/asdfrc
-export ASDF_DATA_DIR=$HOME/.local/share/asdf/
-export CARGO_HOME=$HOME/.local/share/cargo
-export RUSTUP_HOME=$HOME/.local/share/rustup
-export GOPATH=$HOME/.local/share/go
+export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/config
+export NODE_REPL_HISTORY=$XDG_CACHE_HOME/node/history
+export PYTHONHISTFILE=$XDG_CACHE_HOME/python/history
+export PYTHONSTARTUP=$XDG_CONFIG_HOME/python/pythonstartup.py
+export IRBRC=$XDG_CONFIG_HOME/irb/irbrc
+export LESSHISTFILE=$XDG_CACHE_HOME/less/lesshst
+export ASDF_CONFIG_FILE=$XDG_CONFIG_HOME/asdf/asdfrc
+export ASDF_DATA_DIR=$XDG_DATA_HOME/asdf/
+export CARGO_HOME=$XDG_DATA_HOME/cargo
+export RUSTUP_HOME=$XDG_DATA_HOME/rustup
+export GOPATH=$XDG_DATA_HOME/go
 export VIMINIT='let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc"|source $MYVIMRC'
-export BUNDLE_USER_CONFIG=$HOME/.config/bundle
-export BUNDLE_USER_CACHE=$HOME/.cache/bundle
-export BUNDLE_USER_PLUGIN=$HOME/.local/share/bundle
-export IPYTHONDIR=$HOME/.config/jupyter
-export JUPYTER_CONFIG_DIR=$HOME/.config/jupyter
+export BUNDLE_USER_CONFIG=$XDG_CONFIG_HOME/bundle
+export BUNDLE_USER_CACHE=$XDG_CACHE_HOME/bundle
+export BUNDLE_USER_PLUGIN=$XDG_DATA_HOME/bundle
+export IPYTHONDIR=$XDG_CONFIG_HOME/jupyter
+export JUPYTER_CONFIG_DIR=$XDG_CONFIG_HOME/jupyter
 
 # n^3
 export NNN_TRASH=1
 export NNN_PLUG='p:preview-tui'
-export NNN_PREVIEWDIR="$HOME/.cache/nnn/previews/"
+export NNN_PREVIEWDIR="$XDG_CACHE_HOME/nnn/previews/"
 
 # fzf
 export FZF_DEFAULT_OPTS="--pointer '❯' --prompt '❯ ' --color=bg+:#1e2132,bg:#161821,spinner:#84a0c6,hl:#6b7089,fg:#c6c8d1,header:#6b7089,info:#b4be82,pointer:#84a0c6,marker:#84a0c6,fg+:#c6c8d1,prompt:#84a0c6,hl+:#84a0c6"
