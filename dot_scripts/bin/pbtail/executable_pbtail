@@ -1,0 +1,6 @@
+#!/bin/zsh
+set -eu
+pbpaste >> ${1:-list.txt}
+echo >> ${1:-list.txt}
+gawk -i inplace '!a[$0]++{print}' ${1:-list.txt}
+tail -n $(($(tput lines) - 2)) ${1:-list.txt}

@@ -1,0 +1,1 @@
+If you add the command, please add the PATH manually, it is not required if you install with pip, but asdf reshim python <version> is required instead.
