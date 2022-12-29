@@ -35,6 +35,10 @@ alias gst="git status"
 alias gps="git push"
 alias gpl="git pull"
 alias gcm="git commit"
+alias ch="chezmoi"
+alias che="chezmoi edit"
+alias cha="chezmoi apply -v"
+alias chd="chezmoi diff"
 
 alias rm='echo This operation is not an outright deletion\; the file can be restored at any time using the trash-restore command.; rmtrash -i'
 alias rmdir='rmdirtrash -i'
