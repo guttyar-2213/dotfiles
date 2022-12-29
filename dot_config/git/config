@@ -1,0 +1,34 @@
+[user]
+	name = guttyar-2213
+	email = guttyar2213.00@gmail.com
+[push]
+	default = current
+[core]
+	ignorecase = false
+	editor = vim
+	quotepath = false
+	excludesfile = /Users/guttyar2213/.config/git/ignore
+#	excludesfile = ~/.config/git/ignore
+[color]
+	ui = true
+[credential]
+	helper = osxkeychain
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[alias]
+  unstage = reset HEAD
+  graph = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+  grapha = log --graph --all --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+[init]
+	defaultBranch = main
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+#[commit]
+#	template = /Users/guttyar2213/.stCommitMsg
