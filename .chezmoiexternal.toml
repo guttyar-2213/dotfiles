@@ -3,17 +3,7 @@
     url = "https://github.com/PhrozenByte/rmtrash.git"
     refreshPeriod = "168h"
 
-[".scripts/bin/trash-cli"]
-    type = "git-repo"
-    url = "https://github.com/andreafrancia/trash-cli.git"
-    refreshPeriod = "168h"
-
 [".scripts/bin/with"]
     type = "git-repo"
     url = "https://github.com/mchav/with.git"
-    refreshPeriod = "168h"
-
-[".scripts/bin/termtyper"]
-    type = "git-repo"
-    url = "https://github.com/kraanzu/termtyper.git"
     refreshPeriod = "168h"
