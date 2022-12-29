@@ -8,7 +8,7 @@
     url = "https://github.com/mchav/with.git"
     refreshPeriod = "168h"
 
-[".scripts/wolfram"]
+[".scripts/other/wolfram"]
     type = "git-repo"
     url = "https://github.com/WolframResearch/WolframLanguageForJupyter.git"
     refreshPeriod = "168h"
