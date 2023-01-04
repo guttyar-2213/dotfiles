@@ -9,3 +9,4 @@
 .scripts/raycast/store/**
 .scripts/other/applemusic/cache
 .scripts/old/**
+.config/btop/btop.log
