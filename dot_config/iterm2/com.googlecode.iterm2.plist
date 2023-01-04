@@ -70699,7 +70699,7 @@
 	<key>DimInactiveSplitPanes</key>
 	<true/>
 	<key>DimOnlyText</key>
-	<false/>
+	<true/>
 	<key>DisableFullscreenTransparency</key>
 	<false/>
 	<key>DoubleClickPerformsSmartSelection</key>
@@ -76622,7 +76622,7 @@ Make Text Bigger</string>
 	<key>SoundForEsc</key>
 	<false/>
 	<key>SplitPaneDimmingAmount</key>
-	<real>0.099404992403468562</real>
+	<real>0.39610553851997349</real>
 	<key>StatusBarPosition</key>
 	<integer>1</integer>
 	<key>StretchTabsToFillBar</key>
@@ -76632,6 +76632,8 @@ Make Text Bigger</string>
 	<key>TabStyleWithAutomaticOption</key>
 	<integer>6</integer>
 	<key>TabTransform</key>
+	<integer>0</integer>
+	<key>TabViewType</key>
 	<integer>0</integer>
 	<key>TabsHaveCloseButton</key>
 	<true/>
