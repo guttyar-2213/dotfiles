@@ -69,9 +69,21 @@ function reset-launchpad() {
 }
 
 function unlock-keyring() {
-  read -rsp "Password: " pass
+  read -rs "pass?Password: "; echo
   export $(echo -n "$pass" | gnome-keyring-daemon --replace --unlock)
   unset pass
+}
+
+function start-gui() {
+  # gsettings set org.gnome.desktop.remote-desktop.rdp screen-share-mode 'mirror-primary'
+  # grdctl rdp set-credentials <user> <pass>
+  # grdctl vnc set-password <pass>
+  # video=DP-1:800x600e
+  # sudo systemctl enable multi-user.target --force
+  # sudo systemctl set-default multi-user.target
+  unlock-keyring
+  systemctl --user restart gnome-remote-desktop
+  gnome-shell --no-x11 --wayland --headless --virtual-monitor 1680x1050
 }
 
 function nico-dl() {
