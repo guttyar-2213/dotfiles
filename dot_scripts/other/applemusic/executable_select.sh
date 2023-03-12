@@ -16,6 +16,7 @@ elif [[ "$1" = "album" ]]; then
   TRACKS=`echo "$ALL" | jq --arg aartist "$ARTIST" --arg album "$ALBUM" '.albums[$aartist][$album] as $ids | .tracks[] | select(.id as $id | $ids | index($id) > -1)' | jq -s 'sort_by(.trackNumber) | group_by(.discNumber) | flatten'`
 elif [[ "$1" = "added" ]]; then
   TRACKS=`echo "$ALL" | jq '.tracks | sort_by(.dateAdded) | reverse'`
+  FLAG=0
 else
   TRACKS=`echo "$ALL" | jq '.tracks | sort_by(.count) | reverse'`
   FLAG=0
@@ -37,3 +38,4 @@ fi
 
 printf "  Now playing: "
 echo "$TRACKS" | jq -r --arg id "$TRACK" '.[[.[].id] | index($id | tonumber)] | .name'
+
