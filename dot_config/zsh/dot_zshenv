@@ -78,3 +78,11 @@ export FZF_DEFAULT_OPTS="--pointer '❯' --prompt '❯ ' --color=bg+:#1e2132,bg:
 
 # bat
 export BAT_THEME="ansi"
+
+# sage & matplotlib
+export MATPLOTLIBRC="$XDG_CONFIG_HOME/matplotlib/matplotlibrc"
+export DOT_SAGE="$XDG_DATA_HOME/sage"
+export SAGE_STARTUP_FILE="$XDG_CONFIG_HOME/sage/init.sage"
+
+# homebrew
+export HOMEBREW_INSTALL_FROM_API=1

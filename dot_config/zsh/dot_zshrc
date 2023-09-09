@@ -16,10 +16,11 @@ if [ "$(arch)" = "arm64" ] && [ "$(uname)" = "Darwin" ]; then
     /opt/homebrew/opt/make/libexec/gnubin
     /opt/homebrew/opt/gnu-tar/libexec/gnubin
     /opt/homebrew/opt/curl/bin
-    /opt/homebrew/lib/ruby/gems/3.1.0/bin
+    /opt/homebrew/lib/ruby/gems/3.2.0/bin
     /opt/homebrew/opt/libarchive/bin
     /opt/homebrew/opt/icu4c/bin
     /opt/homebrew/opt/icu4c/sbin
+    /opt/homebrew/opt/findutils/libexec/gnubin
     $path
   )
   eval `dircolors`
@@ -105,4 +106,4 @@ autoload -Uz compinit && compinit -i -d $XDG_CACHE_HOME/zsh/zcompdump
 # if (which zprof > /dev/null) ;then
 #     zprof | less
 # fi
-
+#

@@ -241,6 +241,9 @@ Terminal cursor shape is set to [shape].
 # duf - graphical df
 # mapscii.me - telnet server, maps with ascii
 # exiftool - metadata tools for photos
+#   $ exiftool -a -u -g1 image.jpeg
+#   $ exiftool -alldates image.jpeg
+#   $ exiftool '-FileName<%f.$FileTypeExtension' .
 # identify - imagemagick's file command
 # sips - macOS metadata tools for photos
 # convert - imagemagick's editor command
@@ -255,3 +258,9 @@ Terminal cursor shape is set to [shape].
 # uconv - unicode tools
 # termtyper - tui typing test
 # delta - diff with syntax highlight
+# unzip - zip unarchiver
+#    $ unzip -j archive.zip '*/glob_for_in_zip_file'
+# rename - regex rename
+# fdupes - find and delete duplicate files
+# stat - access file infomation
+# rlwrap - add history feature to readline
