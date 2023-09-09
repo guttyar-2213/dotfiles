@@ -1,0 +1,151 @@
+@-moz-document url("moz-extension://5ddb54b2-79cd-464f-b766-541162a59cdb/index.html") {
+  #notion-chrome-extension-app > div > :is(:nth-child(3), :nth-child(4)),
+  #notion-chrome-extension-app > div > :first-child:last-child > :not(:first-child) {
+    display: none !important;
+  }
+  #notion-chrome-extension-app > div > :first-child:last-child {
+    height: 136px !important;
+  }
+  #notion-chrome-extension-app > div > :first-child:last-child > :first-child {
+    margin: auto;
+  }
+  @media (prefers-color-scheme: dark) {
+    body {
+      background: #333639;
+    }
+    * {
+      color: #ddd !important;
+      box-shadow: none !important;
+    }
+    [role="button"]:hover {
+      background: #185495 !important;
+    }
+    svg {
+      fill: #ddd !important;
+    }
+    .notion-focusable-within {
+      background: none !important;
+      border: solid 1px #7777;
+    }
+    #notion-chrome-extension-app > div > :is(:nth-child(1), :nth-child(2)) [role="button"] {
+      background: #0a5bb0 !important;
+    }
+    #notion-chrome-extension-app > div > :is(:nth-child(1), :nth-child(2)) [role="button"]:hover {
+      background: #185495 !important;
+    }
+    #notion-chrome-extension-app > div > :nth-child(3) {
+      border-top: solid 1px #7777;
+      border-bottom: solid 1px #7777;
+    }
+  }
+}
+
+@-moz-document url("moz-extension://ce9971e6-29dc-40a7-9077-0f8f205c5252/popup/popup.html") {
+  * {
+    box-sizing: border-box;
+  }
+  
+  body {
+    width: 264px !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #919191;
+    font-family: -apple-system !important;
+    font-weight: 500 !important;
+    font-size: 12px !important;
+    margin: 10px;
+  }
+  
+  .w3-bar {
+    width: unset !important;
+  }
+  .w3-bar .w3-bar-item {
+    width: 100px !important;
+    padding: 10px 0;
+    border-bottom: solid 2px !important;
+    transition: all 0.1s !important;
+    border-radius: 0 !important;
+  }
+  .w3-bar .w3-bar-item:hover {
+    background: #eee !important;
+  }
+  .w3-bar .w3-buttonSelected {
+    background: none !important;
+    color: #4979ea !important;;
+  }
+  .w3-bar .w3-bar-item:first-child :last-child {
+    position: static !important;
+    font-size: 1em !important;
+  }
+  .w3-ripple:active {
+    opacity: 1 !important;
+  }
+  
+  .w3-display-topright {
+    position: static !important;
+    margin: 0 !important;
+  }
+  #divMenu {
+    margin-left: 10px;
+    padding: 5px;
+    transition: all 0.1s !important;
+  }
+  .menuDot {
+    background-image: none !important;
+    padding: 0;
+    position: relative;
+    width: 1em;
+    height: 1em;
+    font-size: 14px;
+  }
+  .menuDot::before {
+    content: "⋮";
+    position: absolute;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Helvetica";
+    font-weight: bold;
+  }
+  
+  [data-i18n="btnMobileOriginal"],
+  #divIconTranslate,
+  #btnPatreon,
+  .w3-container,
+  *[data-popuppanelsection="2"],
+  #moreOrLess,
+  #btnSwitchInterfaces {
+    display: none;
+  }
+  .w3-container::after,
+  .w3-container::before,
+  .w3-panel::after,
+  .w3-panel::before,
+  .w3-row::after,
+  .w3-row::before,
+  .w3-row-padding::after,
+  .w3-row-padding::before,
+  .w3-cell-row::before,
+  .w3-cell-row::after,
+  .w3-clear::after,
+  .w3-clear::before,
+  .w3-bar::before,
+  .w3-bar::after {
+    content: none;
+  }
+  @media (prefers-color-scheme: dark) {
+    body {
+      color: #bbb !important;
+    }
+    .w3-bar .w3-bar-item:hover {
+      background: #333 !important;
+      color: #bbb !important;
+    }
+    #btnMenu:hover {
+      background: none !important;
+      color: inherit !important;
+    }
+  }
+}

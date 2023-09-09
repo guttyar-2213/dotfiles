@@ -1,0 +1,108 @@
+#alltabs-button{display:none!important;}
+.titlebar-spacer[type="post-tabs"] {
+  display: none !important;
+}
+.titlebar-spacer[type="pre-tabs"] {
+  width: 10px !important;
+}
+:root {
+  --tab-border-radius: 8px !important;
+  --toolbarbutton-border-radius: 8px !important;
+  --tabs-navbar-shadow-size: 0 !important;
+  --tab-selected-bgcolor: var(--toolbar-bgcolor) !important;
+  --toolbar-start-end-padding: 4px !important;
+  --arrowpanel-border-color: #fff0 !important;
+}
+
+#TabsToolbar #firefox-view-button[open] > .toolbarbutton-icon, #tabbrowser-tabs:not([noshadowfortests]) .tab-background:is([selected], [multiselected]) {
+  box-shadow: none !important;
+  /* border: solid 1px #d5d5d5 !important; */
+}
+
+.tab-background {
+  height: 44px !important;
+  border-radius: 0 !important;
+  margin: 0 !important;
+  outline: none !important;
+}
+
+.tabbrowser-tab {
+  padding: 0 !important;
+  border-left: .5px solid var(--chrome-content-separator-color) !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  .tabbrowser-tab {
+    border-left: .5px solid rgba(255,255,255,.2) !important;
+  }
+}
+
+#TabsToolbar .toolbarbutton-1 {
+  width: 44px;
+}
+
+#TabsToolbar, #navigator-toolbox {
+  border-bottom: .5px solid var(--chrome-content-separator-color) !important;
+}
+
+toolbarbutton#scrollbutton-up, toolbarbutton#scrollbutton-down {display:none !important;}
+
+/* bring tabs below search bar
+#titlebar {
+  order: 1 !important;
+} */
+
+/* Compact Extension Panel */
+
+#unified-extensions-view {
+  width: 24em !important;
+}
+
+#unified-extensions-view .panel-header,
+#unified-extensions-view toolbarseparator,
+#unified-extensions-view .unified-extensions-item-menu-button.subviewbutton
+{
+  display: none !important;
+}
+
+#unified-extensions-panel #unified-extensions-view
+{
+  margin-top: 5px !important;
+}
+
+#overflowed-extensions-list .toolbarbutton-icon,
+#unified-extensions-panel .toolbarbutton-icon,
+.unified-extensions-item-icon
+{
+  --uei-icon-size: 20px;
+}
+
+#unified-extensions-panel .subviewbutton {
+  padding: 5px 10px !important;
+}
+
+#unified-extensions-view > vbox > vbox > .unified-extensions-item {
+  margin: 0 5px !important;
+}
+
+.unified-extensions-item-name {
+  text-overflow: ellipsis;
+  width: 19.5em;
+  overflow: hidden;
+  line-height: 1.5;
+  white-space: nowrap;
+}
+
+.unified-extensions-item-message {
+  font-size: .75em !important;
+}
+
+#unified-extensions-panel #unified-extensions-manage-extensions.subviewbutton {
+  padding: 10px 20px !important;
+  margin: 0 -5px !important;
+  margin-top: 0;
+  border-radius: 0;
+  padding-inline-start: 0;
+  line-height: 1.5;
+  border-top: .5px solid var(--chrome-content-separator-color) !important;
+}
