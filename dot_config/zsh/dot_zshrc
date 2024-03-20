@@ -82,10 +82,7 @@ zinit ice blockf
 zinit light zsh-users/zsh-completions
 
 zinit ice wait lucid
-zinit light asdf-vm/asdf
-
-zinit ice wait lucid
-zinit light Tarrasch/zsh-bd
+zinit light momo-lab/zsh-replace-multiple-dots
 
 zinit ice pick"async.zsh" src"pure.zsh"
 zinit light guttyar-2213/pure
@@ -106,4 +103,4 @@ autoload -Uz compinit && compinit -i -d $XDG_CACHE_HOME/zsh/zcompdump
 # if (which zprof > /dev/null) ;then
 #     zprof | less
 # fi
-#
+
